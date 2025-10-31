@@ -25,3 +25,24 @@ wandb login
 Test:
 python tools/demo.py image -n yolox-s -c /path/to/your/yolox_s.pth --path assets/dog.jpg --conf 0.25 --nms 0.45 --tsize 640 --save_result --device [cpu/gpu]
 python tools/demo.py image -n yolox-nano -c /home/ramesh/automltraining/yolox/pytorch_weights/yolox_nano.pth --path assets/dog.jpg --conf 0.25 --nms 0.45 --tsize 416 --save_result --device gpu
+
+Dataset Preparation
+Path to coco dataset: /home/ramesh/coco_dataset
+
+mkdir -p /home/ramesh/coco_dataset
+cd /home/ramesh/coco_dataset
+wget http://images.cocodataset.org/zips/train2017.zip
+wget http://images.cocodataset.org/zips/val2017.zip
+wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+unzip train2017.zip
+unzip val2017.zip
+unzip annotations_trainval2017.zip
+
+# cd /home/ramesh/automltraining/yolox/YOLOX
+# ln -s /path/to/COCO ./datasets/COCO
+
+ln -s /home/ramesh/coco_dataset /home/ramesh/automltraining/yolox/YOLOX/datasets/COCO
+
+Retrain:
+cd /home/ramesh/automltraining/yolox/YOLOX
+python tools/train.py -n yolox-nano -d 1 -b 64 --fp16 -o --cache --logger wandb wandb-project yolox
