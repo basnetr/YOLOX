@@ -55,3 +55,4 @@ Example:
 self.num_classes = 5
 self.max_epoch = 300
 ln -s /home/ramesh/tfds_datasets/cppe5 /home/ramesh/automltraining/yolox/YOLOX/datasets/cppe5
+Training Logs and Models: https://drive.google.com/drive/u/1/folders/1yotC_Hia35JCB0cOMgkFEmSDxzJO8Wr0
