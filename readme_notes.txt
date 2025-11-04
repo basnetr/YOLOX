@@ -46,3 +46,12 @@ ln -s /home/ramesh/coco_dataset /home/ramesh/automltraining/yolox/YOLOX/datasets
 Retrain:
 cd /home/ramesh/automltraining/yolox/YOLOX
 python tools/train.py -n yolox-nano -d 1 -b 64 --fp16 -o --cache --logger wandb wandb-project yolox
+
+
+Training Custom Dataset (CPPE5)
+See: /home/ramesh/automltraining/yolox/YOLOX/exps/cppe5/yolox_nano_cppe5_pytorch.py
+Change number of classes, epochs and dataset path there.
+Example:
+self.num_classes = 5
+self.max_epoch = 300
+ln -s /home/ramesh/tfds_datasets/cppe5 /home/ramesh/automltraining/yolox/YOLOX/datasets/cppe5
